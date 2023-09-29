@@ -5,7 +5,6 @@ app
 app.Run();
 
 //Use方法内部会将Func<HttpContext, Func<Task>, Task>转化内Func<RequestDelegate, RequestDelegate>
-//
 static async Task HelloMiddleware(HttpContext httpContext, Func<Task> next){
     await httpContext.Response.WriteAsync("Hello, ");
     await next();
