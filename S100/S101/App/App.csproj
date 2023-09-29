@@ -1,0 +1,15 @@
+<!-- 继承基准配置 -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- 输出类型 -->
+    <OutputType>Exe</OutputType>
+    <!-- 采用的目标框架 -->
+    <TargetFramework>net7.0</TargetFramework>
+    <!-- 是否启用全局命名空间，启用并编译项目后会自动生成名为`App.GlobalUsings.g.cs`的文件来导入一系列命名空间 -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- 是否启用可空引用类型，启用后可以在类型后追加`？`表示接收参数或者返回对象可能为空 -->
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
