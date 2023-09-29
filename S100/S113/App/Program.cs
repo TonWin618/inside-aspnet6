@@ -12,4 +12,5 @@ var app = builder.Build();
 app.MapGet("/greet", Greet);
 app.Run();
 
+//路由系统在调用该方法前会利用依赖注入容器提供IGreeter对象
 static string Greet(IGreeter greeter) => greeter.Greet(DateTimeOffset.Now);
