@@ -1,0 +1,13 @@
+<!-- 不同的应用类型会采用的不同的SDK -->
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <!-- Asp.Net应用不需要exe来启动 -->
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- 禁用生成默认的launchSettings启动配置文件 -->
+    <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
+  </PropertyGroup>
+
+</Project>
