@@ -3,6 +3,11 @@
 version: '3.4'
 
 services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "5379:6379"
+      
   app1:
     image: app1
     build:
@@ -17,8 +22,11 @@ services:
     image: "daprio/daprd:edge"
     command: [ "./daprd", 
       "-app-id", "app1", 
-      "-app-port", "5001"
+      "-app-port", "5001",
+      "-components-path", "/components"
       ]
+    volumes:
+      - "./dapr/components/:/components"
     network_mode: "service:app1"
     depends_on:
       - app1
@@ -35,8 +43,11 @@ services:
     image: "daprio/daprd:edge"
     command: [ "./daprd", 
       "-app-id", "app2", 
-      "-app-port", "5002"
+      "-app-port", "5002",
+      "-components-path", "/components"
       ]
+    volumes:
+      - "./dapr/components/:/components"
     network_mode: "service:app2"
     depends_on:
       - app1
