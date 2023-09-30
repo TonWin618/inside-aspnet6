@@ -1,0 +1,53 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "5379:6379"
+      
+  app1:
+    image: app1
+    build:
+      context: .
+      dockerfile: App1/Dockerfile
+    ports:
+      - 5001:5001
+    depends_on:
+      - app2
+
+  app1-dapr:
+    image: "daprio/daprd:edge"
+    command: [ "./daprd", 
+      "-app-id", "app1", 
+      "-app-port", "5001",
+      "-components-path", "/components"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+    network_mode: "service:app1"
+    depends_on:
+      - app1
+
+  app2:
+    image: app2
+    build:
+      context: .
+      dockerfile: App2/Dockerfile
+    ports:
+      - 5002:5002
+
+  app2-dapr:
+    image: "daprio/daprd:edge"
+    command: [ "./daprd", 
+      "-app-id", "app2", 
+      "-app-port", "5002",
+      "-components-path", "/components"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+    network_mode: "service:app2"
+    depends_on:
+      - app1
