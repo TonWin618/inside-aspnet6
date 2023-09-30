@@ -1,0 +1,23 @@
+syntax = "proto3";
+option csharp_namespace = "App";
+//对应文件在`./obj/Debug/.net7.0`文件夹下生成
+// 服务包含加减乘除四个操作
+service Calculator{
+    rpc Add (InputMessage) returns (OutputMessage);
+    rpc Substract (InputMessage) returns (OutputMessage);
+    rpc Multiply (InputMessage) returns (OutputMessage);
+    rpc Divide (InputMessage) returns (OutputMessage);
+}
+
+//输入消息包含两个整型数据成员
+message InputMessage{
+    int32 x = 1;
+    int32 y = 2;
+}
+
+//输出消息包含计算状态，计算结果以及错误消息
+message OutputMessage{
+    int32 status = 1;
+    int32 result = 2;
+    string error = 3;
+}
