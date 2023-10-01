@@ -1,7 +1,4 @@
-using Shared;
-using Microsoft.AspNetCore.Mvc;
 using App2;
-using Dapr;
 
 var builder = WebApplication.CreateBuilder(args);
 //注册Accumulator Actor
