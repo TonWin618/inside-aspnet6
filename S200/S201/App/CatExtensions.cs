@@ -2,6 +2,7 @@
 
 namespace App
 {
+    //扩展服务注册方法
     public static class CatExtensions
     {
         public static Cat Register(this Cat cat, Type from, Type to, Lifetime lifetime)
@@ -39,7 +40,8 @@ namespace App
             cat.Register(new ServiceRegistry(typeof(TService), lifetime, (c, arguments) => factory(c)));
             return cat;
         }
-
+        
+        //程序集范围的批量服务注册
         public static Cat Register(this Cat cat, Assembly assembly)
         {
             var typedAttributes = from type in assembly.GetExportedTypes()
