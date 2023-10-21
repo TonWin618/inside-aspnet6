@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 
+//需添加Microsoft.Extensions.Configuration.EnvironmentVariables的包引用
 Environment.SetEnvironmentVariable("TEST_GENDER", "Male");
 Environment.SetEnvironmentVariable("TEST_AGE", "18");
 Environment.SetEnvironmentVariable("TEST_CONTACTINFO:EMAILADDRESS", "foobar@outlook.com");
